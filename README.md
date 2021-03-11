@@ -1,8 +1,8 @@
 # Lab: Custom Acceleration with FPGAs
 
-**Part 1 Due** Thursday, March 12th at 17:00 via the LumiNUS dropbox.<br/>
-**Part 2 Due** Thursday, March 19th at 17:00 via the LumiNUS dropbox.<br/>
-**Part 3 Due** Thursday, March 26th at 17:00 via the LumiNUS dropbox.
+**Part 1 Due** Thursday, March 14th at 23:59 via the LumiNUS dropbox.<br/>
+**Part 2 Due** Thursday, March 21th at 23:59 via the LumiNUS dropbox.<br/>
+**Part 3 Due** Thursday, March 28th at 23:59 via the LumiNUS dropbox.
 
 Questions about this assignment should be sent to the IVLE Project forum.
 
