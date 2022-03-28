@@ -1,0 +1,2 @@
+zynq/build/*
+!zynq/build/accel/solution0/syn/report/mmult_hw_csynth.rpt
