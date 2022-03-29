@@ -7,7 +7,7 @@ add_files -tb $src_dir/mmult_test.cpp
 open_solution "solution0"
 set_part {xc7z020clg484-1}
 create_clock -period 10 -name default
-csim_design -clean
+csim_design -clean -ldflags {-Wl,--stack,10485760}
 csynth_design
 close_project
 exit

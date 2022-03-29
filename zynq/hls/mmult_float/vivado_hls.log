@@ -1,0 +1,181 @@
+================================================================
+  Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC
+  Version 2017.1
+  Build 1846317 on Fri Apr 14 19:19:38 MDT 2017
+  Copyright (C) 1986-2017 Xilinx, Inc. All Rights Reserved.
+================================================================
+INFO: [HLS 200-10] Running 'C:/Xilinx/Vivado_HLS/2017.1/bin/unwrapped/win64.o/vivado_hls.exe'
+INFO: [HLS 200-10] For user 'Sharadh' on host 'sharadh-p7560' (Windows NT_amd64 version 6.2) on Fri Mar 25 01:11:20 +0800 2022
+INFO: [HLS 200-10] In directory 'D:/Libraries/Desktop/cs5222-lab-fpga/zynq/hls/mmult_float'
+INFO: [HLS 200-10] Opening project 'D:/Libraries/Desktop/cs5222-lab-fpga/zynq/hls/mmult_float/accel'.
+INFO: [HLS 200-10] Adding design file './mmult_float.cpp' to the project
+INFO: [HLS 200-10] Adding test bench file './mmult_test.cpp' to the project
+INFO: [HLS 200-10] Opening solution 'D:/Libraries/Desktop/cs5222-lab-fpga/zynq/hls/mmult_float/accel/solution0'.
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-10] Setting target device to 'xc7z020clg484-1'
+INFO: [SIM 211-2] *************** CSIM start ***************
+INFO: [SIM 211-4] CSIM will launch GCC as the compiler.
+   Compiling ../../../../mmult_test.cpp in debug mode
+   Compiling ../../../../mmult_float.cpp in debug mode
+   Generating csim.exe
+In file included from C:/Xilinx/Vivado_HLS/2017.1/include/floating_point_v7_0_bitacc_cmodel.h:143:0,
+                 from C:/Xilinx/Vivado_HLS/2017.1/include/hls_fpo.h:172,
+                 from C:/Xilinx/Vivado_HLS/2017.1/include/hls_half.h:57,
+                 from C:/Xilinx/Vivado_HLS/2017.1/include/ap_int.h:74,
+                 from C:/Xilinx/Vivado_HLS/2017.1/include/ap_axi_sdata.h:86,
+                 from ../../../../mmult.h:3,
+                 from ../../../../mmult_test.cpp:5:
+C:/Xilinx/Vivado_HLS/2017.1/include/gmp.h:62:0: warning: "__GMP_LIBGMP_DLL" redefined [enabled by default]
+C:/Xilinx/Vivado_HLS/2017.1/include/floating_point_v7_0_bitacc_cmodel.h:135:0: note: this is the location of the previous definition
+In file included from C:/Xilinx/Vivado_HLS/2017.1/include/floating_point_v7_0_bitacc_cmodel.h:143:0,
+                 from C:/Xilinx/Vivado_HLS/2017.1/include/hls_fpo.h:172,
+                 from C:/Xilinx/Vivado_HLS/2017.1/include/hls_half.h:57,
+                 from C:/Xilinx/Vivado_HLS/2017.1/include/ap_int.h:74,
+                 from C:/Xilinx/Vivado_HLS/2017.1/include/ap_axi_sdata.h:86,
+                 from ../../../../mmult.h:3,
+                 from ../../../../mmult_float.cpp:4:
+C:/Xilinx/Vivado_HLS/2017.1/include/gmp.h:62:0: warning: "__GMP_LIBGMP_DLL" redefined [enabled by default]
+C:/Xilinx/Vivado_HLS/2017.1/include/floating_point_v7_0_bitacc_cmodel.h:135:0: note: this is the location of the previous definition
+DEBUGGING AXI4 STREAMING DATA TYPES!
+Matrices identical ... Test successful!
+INFO: [SIM 211-1] CSim done with 0 errors.
+INFO: [SIM 211-3] *************** CSIM finish ***************
+INFO: [HLS 200-10] Analyzing design file './mmult_float.cpp' ... 
+INFO: [HLS 200-10] Validating synthesis directives ...
+INFO: [HLS 200-111] Finished Checking Pragmas Time (s): cpu = 00:00:01 ; elapsed = 00:00:09 . Memory (MB): peak = 99.191 ; gain = 48.617
+INFO: [HLS 200-111] Finished Linking Time (s): cpu = 00:00:01 ; elapsed = 00:00:10 . Memory (MB): peak = 99.191 ; gain = 48.617
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [XFORM 203-603] Inlining function 'pop_stream' into 'mmult_hw' (./mmult_float.cpp:65).
+INFO: [XFORM 203-603] Inlining function 'pop_stream' into 'mmult_hw' (./mmult_float.cpp:51).
+INFO: [XFORM 203-603] Inlining function 'pop_stream' into 'mmult_hw' (./mmult_float.cpp:42).
+INFO: [XFORM 203-603] Inlining function 'push_stream' into 'mmult_hw' (./mmult_float.cpp:93).
+INFO: [HLS 200-111] Finished Standard Transforms Time (s): cpu = 00:00:01 ; elapsed = 00:00:10 . Memory (MB): peak = 107.141 ; gain = 56.566
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [HLS 200-111] Finished Checking Synthesizability Time (s): cpu = 00:00:01 ; elapsed = 00:00:10 . Memory (MB): peak = 112.176 ; gain = 61.602
+WARNING: [XFORM 203-1103] Ignored data pack directive on non-struct variable 'out_stream.data.V' (./mmult_float.cpp:8).
+WARNING: [XFORM 203-1103] Ignored data pack directive on non-struct variable 'in_stream.data.V' (./mmult_float.cpp:8).
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'L2' (./mmult_float.cpp:74) in function 'mmult_hw' for pipelining.
+INFO: [XFORM 203-501] Unrolling loop 'L3' (./mmult_float.cpp:78) in function 'mmult_hw' completely.
+INFO: [XFORM 203-101] Partitioning array 'in_buf' (./mmult_float.cpp:30) in dimension 2 with a block factor 8.
+INFO: [XFORM 203-101] Partitioning array 'weight_buf' (./mmult_float.cpp:29) in dimension 2 with a block factor 8.
+WARNING: [XFORM 203-124] Array  'in_stream.data.V' (./mmult_float.cpp:8): may have improper streaming access(es), possible reasons: (1) some entries are accessed more than once; (2) some entries are not used; (3) the entries are not accessed in sequential order.
+WARNING: [XFORM 203-124] Array  'in_stream.keep.V' (./mmult_float.cpp:8): may have improper streaming access(es), possible reasons: (1) some entries are accessed more than once; (2) some entries are not used; (3) the entries are not accessed in sequential order.
+WARNING: [XFORM 203-124] Array  'in_stream.strb.V' (./mmult_float.cpp:8): may have improper streaming access(es), possible reasons: (1) some entries are accessed more than once; (2) some entries are not used; (3) the entries are not accessed in sequential order.
+WARNING: [XFORM 203-124] Array  'in_stream.user.V' (./mmult_float.cpp:8): may have improper streaming access(es), possible reasons: (1) some entries are accessed more than once; (2) some entries are not used; (3) the entries are not accessed in sequential order.
+WARNING: [XFORM 203-124] Array  'in_stream.last.V' (./mmult_float.cpp:8): may have improper streaming access(es), possible reasons: (1) some entries are accessed more than once; (2) some entries are not used; (3) the entries are not accessed in sequential order.
+WARNING: [XFORM 203-124] Array  'in_stream.id.V' (./mmult_float.cpp:8): may have improper streaming access(es), possible reasons: (1) some entries are accessed more than once; (2) some entries are not used; (3) the entries are not accessed in sequential order.
+WARNING: [XFORM 203-124] Array  'in_stream.dest.V' (./mmult_float.cpp:8): may have improper streaming access(es), possible reasons: (1) some entries are accessed more than once; (2) some entries are not used; (3) the entries are not accessed in sequential order.
+WARNING: [XFORM 203-124] Array  'out_stream.data.V' (./mmult_float.cpp:8): may have improper streaming access(es), possible reasons: (1) some entries are accessed more than once; (2) some entries are not used; (3) the entries are not accessed in sequential order.
+WARNING: [XFORM 203-124] Array  'out_stream.keep.V' (./mmult_float.cpp:8): may have improper streaming access(es), possible reasons: (1) some entries are accessed more than once; (2) some entries are not used; (3) the entries are not accessed in sequential order.
+WARNING: [XFORM 203-124] Array  'out_stream.strb.V' (./mmult_float.cpp:8): may have improper streaming access(es), possible reasons: (1) some entries are accessed more than once; (2) some entries are not used; (3) the entries are not accessed in sequential order.
+WARNING: [XFORM 203-124] Array  'out_stream.user.V' (./mmult_float.cpp:8): may have improper streaming access(es), possible reasons: (1) some entries are accessed more than once; (2) some entries are not used; (3) the entries are not accessed in sequential order.
+WARNING: [XFORM 203-124] Array  'out_stream.last.V' (./mmult_float.cpp:8): may have improper streaming access(es), possible reasons: (1) some entries are accessed more than once; (2) some entries are not used; (3) the entries are not accessed in sequential order.
+WARNING: [XFORM 203-124] Array  'out_stream.id.V' (./mmult_float.cpp:8): may have improper streaming access(es), possible reasons: (1) some entries are accessed more than once; (2) some entries are not used; (3) the entries are not accessed in sequential order.
+WARNING: [XFORM 203-124] Array  'out_stream.dest.V' (./mmult_float.cpp:8): may have improper streaming access(es), possible reasons: (1) some entries are accessed more than once; (2) some entries are not used; (3) the entries are not accessed in sequential order.
+INFO: [HLS 200-111] Finished Pre-synthesis Time (s): cpu = 00:00:02 ; elapsed = 00:00:11 . Memory (MB): peak = 143.285 ; gain = 92.711
+WARNING: [XFORM 203-542] Cannot flatten a loop nest 'TILE' (./mmult_float.cpp:60:4) in function 'mmult_hw' : 
+WARNING: [XFORM 203-542] the outer loop is not a perfect loop.
+INFO: [XFORM 203-541] Flattening a loop nest 'TILE2' (./mmult_float.cpp:72:4) in function 'mmult_hw'.
+WARNING: [XFORM 203-542] Cannot flatten a loop nest 'TILE3' (./mmult_float.cpp:86:4) in function 'mmult_hw' : 
+WARNING: [XFORM 203-542] the outer loop is not a perfect loop.
+WARNING: [XFORM 203-542] Cannot flatten a loop nest 'LT' (./mmult_float.cpp:58:3) in function 'mmult_hw' : 
+WARNING: [XFORM 203-542] more than one sub loop.
+INFO: [HLS 200-111] Finished Architecture Synthesis Time (s): cpu = 00:00:03 ; elapsed = 00:00:12 . Memory (MB): peak = 150.047 ; gain = 99.473
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'mmult_hw' ...
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Implementing module 'mmult_hw' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'LOAD_I_2'.
+INFO: [SCHED 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 2.
+INFO: [SCHED 204-61] Pipelining loop 'TILE2_L2'.
+WARNING: [SCHED 204-69] Unable to schedule 'load' operation ('in_buf_0_load_2', ./mmult_float.cpp:79) on array 'in_buf[0]', ./mmult_float.cpp:30 due to limited memory ports.
+INFO: [SCHED 204-61] Pipelining result: Target II: 1, Final II: 16, Depth: 1287.
+INFO: [SCHED 204-61] Pipelining loop 'STORE_O_2'.
+INFO: [SCHED 204-61] Pipelining result: Target II: 1, Final II: 1, Depth: 3.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 18.906 seconds; current allocated memory: 116.918 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 2.96 seconds; current allocated memory: 139.121 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'mmult_hw' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-500] Setting interface mode on port 'mmult_hw/in_stream_data_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'mmult_hw/in_stream_keep_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'mmult_hw/in_stream_strb_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'mmult_hw/in_stream_user_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'mmult_hw/in_stream_last_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'mmult_hw/in_stream_id_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'mmult_hw/in_stream_dest_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'mmult_hw/out_stream_data_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'mmult_hw/out_stream_keep_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'mmult_hw/out_stream_strb_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'mmult_hw/out_stream_user_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'mmult_hw/out_stream_last_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'mmult_hw/out_stream_id_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'mmult_hw/out_stream_dest_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on function 'mmult_hw' to 's_axilite & ap_ctrl_hs'.
+INFO: [RTGEN 206-100] Bundling port 'return' to AXI-Lite port CONTROL_BUS.
+INFO: [SYN 201-210] Renamed object name 'mmult_hw_weight_buf_0' to 'mmult_hw_weight_bbkb' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'mmult_hw_weight_buf_1' to 'mmult_hw_weight_bcud' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'mmult_hw_weight_buf_2' to 'mmult_hw_weight_bdEe' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'mmult_hw_weight_buf_3' to 'mmult_hw_weight_beOg' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'mmult_hw_weight_buf_4' to 'mmult_hw_weight_bfYi' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'mmult_hw_weight_buf_5' to 'mmult_hw_weight_bg8j' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'mmult_hw_weight_buf_6' to 'mmult_hw_weight_bhbi' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'mmult_hw_weight_buf_7' to 'mmult_hw_weight_bibs' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'mmult_hw_fadd_32ns_32ns_32_5_full_dsp' to 'mmult_hw_fadd_32njbC' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'mmult_hw_fmul_32ns_32ns_32_4_max_dsp' to 'mmult_hw_fmul_32nkbM' due to the length limit 20
+INFO: [RTGEN 206-104] Estimated max fanout for 'mmult_hw' is 22033 from HDL expression: ((1'b1 == ap_CS_fsm_pp1_stage0) & (ap_block_pp1_stage0_flag00011001 == 1'b0))
+INFO: [RTGEN 206-100] Generating core module 'mmult_hw_fadd_32njbC': 16 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mmult_hw_fmul_32nkbM': 16 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'mmult_hw'.
+INFO: [HLS 200-111]  Elapsed time: 3.801 seconds; current allocated memory: 164.067 MB.
+INFO: [RTMG 210-278] Implementing memory 'mmult_hw_offset_buf_ram' using block RAMs.
+INFO: [RTMG 210-278] Implementing memory 'mmult_hw_weight_bbkb_ram' using block RAMs.
+INFO: [RTMG 210-278] Implementing memory 'mmult_hw_in_buf_0_ram' using block RAMs.
+INFO: [RTMG 210-278] Implementing memory 'mmult_hw_out_buf_ram' using block RAMs.
+INFO: [HLS 200-111] Finished generating all RTL models Time (s): cpu = 00:00:20 ; elapsed = 00:00:32 . Memory (MB): peak = 265.695 ; gain = 215.121
+INFO: [SYSC 207-301] Generating SystemC RTL for mmult_hw.
+INFO: [VHDL 208-304] Generating VHDL RTL for mmult_hw.
+INFO: [VLOG 209-307] Generating Verilog RTL for mmult_hw.
+INFO: [IMPL 213-8] Exporting RTL as an IP in IP-XACT.
+
+****** Vivado v2017.1 (64-bit)
+  **** SW Build 1846317 on Fri Apr 14 18:55:03 MDT 2017
+  **** IP Build 1846188 on Fri Apr 14 20:52:08 MDT 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+source run_ippack.tcl -notrace
+INFO: [ProjectBase 1-489] The host OS only allows 260 characters in a normal path. The project is stored in a path with more than 80 characters. If you experience issues with IP, Block Designs, or files not being found, please consider moving the project to a location with a shorter path. Alternately consider using the OS subst command to map part of the path to a drive letter.
+Current project path is 'D:/Libraries/Desktop/cs5222-lab-fpga/zynq/hls/mmult_float/accel/solution0/impl/ip'
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2017.1/data/ip'.
+WARNING: [IP_Flow 19-4832] The IP name 'mmult_hw_ap_fadd_3_full_dsp_32' you have specified is long. The Windows operating system has path length limitations. It is recommended you use shorter names to reduce the likelihood of issues.
+INFO: [IP_Flow 19-1686] Generating 'Synthesis' target for IP 'mmult_hw_ap_fadd_3_full_dsp_32'...
+INFO: [IP_Flow 19-1686] Generating 'Simulation' target for IP 'mmult_hw_ap_fadd_3_full_dsp_32'...
+WARNING: [IP_Flow 19-4832] The IP name 'mmult_hw_ap_fmul_2_max_dsp_32' you have specified is long. The Windows operating system has path length limitations. It is recommended you use shorter names to reduce the likelihood of issues.
+INFO: [IP_Flow 19-1686] Generating 'Synthesis' target for IP 'mmult_hw_ap_fmul_2_max_dsp_32'...
+INFO: [IP_Flow 19-1686] Generating 'Simulation' target for IP 'mmult_hw_ap_fmul_2_max_dsp_32'...
+bad lexical cast: source type value could not be interpreted as target
+    while executing
+"rdi::set_property core_revision 2203250111 {component component_1}"
+    invoked from within
+"set_property core_revision $Revision $core"
+    (file "run_ippack.tcl" line 923)
+INFO: [Common 17-206] Exiting Vivado at Fri Mar 25 01:11:59 2022...
+ERROR: [IMPL 213-28] Failed to generate IP.
+command 'ap_source' returned error code
+    while executing
+"source [lindex $::argv 1] "
+    ("uplevel" body line 1)
+    invoked from within
+"uplevel \#0 { source [lindex $::argv 1] } "
+
+INFO: [HLS 200-112] Total elapsed time: 39.585 seconds; peak allocated memory: 164.067 MB.
