@@ -63,7 +63,7 @@ def getIterator(args, mode):
     with open(fname_img, 'rb') as fimg:
         magic, num, rows, cols = struct.unpack(">IIII", fimg.read(16))
         img = np.fromfile(fimg, dtype=np.uint8).reshape(len(lbl), rows, cols)
- 
+
     # Format tuple: (label, data)
     get_img = lambda idx: (lbl[idx], img[idx])
 
@@ -140,7 +140,7 @@ if __name__ == '__main__':
 
     # Fixed point computation
     # CSE 548: Todo: tweak the SCALE to get less than 20% classification error
-    SCALE = 0
+    SCALE = 500000
     # CSE 548 - Change me
     offset = reg.intercept_
     weight = reg.coef_

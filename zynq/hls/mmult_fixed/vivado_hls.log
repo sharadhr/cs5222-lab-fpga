@@ -1,0 +1,10 @@
+================================================================
+  Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC
+  Version 2017.1
+  Build 1846317 on Fri Apr 14 19:19:38 MDT 2017
+  Copyright (C) 1986-2017 Xilinx, Inc. All Rights Reserved.
+================================================================
+INFO: [HLS 200-10] Running 'C:/Xilinx/Vivado_HLS/2017.1/bin/unwrapped/win64.o/vivado_hls.exe'
+INFO: [HLS 200-10] For user 'Sharadh' on host 'sharadh-p7560' (Windows NT_amd64 version 6.2) on Sun Mar 28 15:08:54 +0800 2021
+INFO: [HLS 200-10] In directory 'D:/Libraries/Desktop/cs5222-lab-fpga/zynq/hls/mmult_fixed'
+@W [AP-1] Could not read script '..\tcl\hls.tcl'.

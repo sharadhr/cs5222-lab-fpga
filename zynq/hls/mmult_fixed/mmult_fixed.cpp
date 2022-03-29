@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdint.h>
 
 #include "mmult.h"
 
@@ -17,32 +18,84 @@ void mmult_hw (AXI_VAL in_stream[IS_SIZE], AXI_VAL out_stream[OS_SIZE])
 	assert(FEAT%IN_WIDTH_RATIO==0);
 	assert((BATCH*CLASSES)%OUT_WIDTH_RATIO==0);
 
+	// weight converter
+	union
+	{
+		axi_T packet;
+		w_bit_T i8_vals[8];
+	} w_converter;
+
+	// input converter
+	union
+	{
+		axi_T packet;
+		in_bit_T ui8_vals[8];
+	} in_converter;
+
+	// output and offset converter
+	union
+	{
+		axi_T packet;
+		out_bit_T i32_vals[2];
+	} out_converter;
+
 	// Hardware memory buffers
 	out_T offset_buf[CLASSES];
 	w_T weight_buf[CLASSES][FEAT];
 	in_T in_buf[TILING][FEAT];
 	out_T out_buf[TILING][CLASSES];
 
+	#pragma HLS ARRAY_PARTITION variable=in_buf block factor=32 dim=2
+	#pragma HLS ARRAY_PARTITION variable=weight_buf block factor=32 dim=2
+
 	// Input and output AXI stream indices
 	int is_idx = 0;
 	int os_idx = 0;
 
 	// Stream in offset vector
-	// CSE548 TODO
+	LOAD_OFF_1: for (int i = 0; i < CLASSES; i+=OUT_WIDTH_RATIO) {
+		#pragma HLS PIPELINE II=1
+		out_converter.packet = pop_stream(in_stream[is_idx++]);
+		for (size_t val = 0; val < 2; val++) {
+			offset_buf[i + val] = out_converter.i32_vals[val];
+		}
+	}
 
 	// Stream in weight matrix
-	// CSE548 TODO
+	LOAD_W_1: for (int i = 0; i < CLASSES; i++) {
+		LOAD_W_2: for (int j = 0; j < FEAT; j+=IN_WIDTH_RATIO) {
+			// Pop AXI data packet
+			#pragma HLS PIPELINE II=1
+			w_converter.packet = pop_stream(in_stream[is_idx++]);
+			for (size_t val = 0; val < 8; val++) {
+				weight_buf[i][j + val] = w_converter.i8_vals[val];
+			}
+		}
+	}
 
 	// Iterate over tiles
 	LT: for (int t = 0; t < BATCH; t+=TILING) {
 
 		// Stream in input tile
 		// CSE548 TODO
+		TILE: for (int i = 0; i < TILING; ++i)
+		{
+			#pragma HLS PIPELINE II=1
+			LOAD_I_2: for (int j = 0; j < FEAT; j+=IN_WIDTH_RATIO)
+			{
+				// Pop AXI data packet
+				in_converter.packet = pop_stream(in_stream[is_idx++]);
+				for (size_t val = 0; val < 8; val++) {
+					in_buf[i][j + val] = in_converter.ui8_vals[val];
+				}
+			}
+		}
 
 		// Perform matrix multiplication
 		L1: for (int i = 0; i < TILING; i++) {
 			// Iterate over output classes
 			L2: for (int j = 0; j < CLASSES; j++) {
+				#pragma HLS PIPELINE II=1
 				// Perform the dot product
 				out_T tmp = offset_buf[j];
 				L3: for(int k = 0; k < FEAT; k++) {
@@ -55,6 +108,17 @@ void mmult_hw (AXI_VAL in_stream[IS_SIZE], AXI_VAL out_stream[OS_SIZE])
 
 		// Stream out output matrix
 		// CSE548 TODO
+		TILE3: for (int i = 0; i < TILING; ++i)
+		{
+			STORE_O_2: for (int j = 0; j < CLASSES; j += OUT_WIDTH_RATIO)
+			{
+				#pragma HLS PIPELINE II=1
+				// Push output element into AXI stream
+				out_converter.i32_vals[0] = out_buf[i][j+0];
+				out_converter.i32_vals[1] = out_buf[i][j+1];
+				out_stream[os_idx++] = push_stream(out_converter.packet, os_idx == (OS_SIZE));
+			}
+		}
 	}
 }
 
@@ -93,4 +157,3 @@ AXI_VAL push_stream(axi_T const &v, bool last = false)
 	e.dest = 0;
 	return e;
 }
-
