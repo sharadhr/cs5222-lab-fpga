@@ -36,6 +36,7 @@ create_project $proj_name $proj_path -part xc7z020clg484-1
 # Update IP repository with generated IP
 file mkdir $ip_path
 set_property ip_repo_paths $ip_path [current_project]
+set_param general.maxThreads 8
 update_ip_catalog
 update_ip_catalog -add_ip $hls_ip -repo_path $ip_path
 
@@ -89,7 +90,7 @@ if { ${design_name} eq "" } {
    set errMsg "Design <$design_name> already exists in your project, please set the variable <design_name> to another value."
    set nRet 1
 } elseif { [get_files -quiet ${design_name}.bd] ne "" } {
-   # USE CASES: 
+   # USE CASES:
    #    6) Current opened design, has components, but diff names, design_name exists in project.
    #    7) No opened design, design_name exists in project.
 
@@ -1596,7 +1597,7 @@ update_compile_order -fileset sim_1
 
 # Run bistream generation on 4 threads
 launch_runs impl_1 -to_step write_bitstream -jobs 4
-wait_on_run impl_1 
+wait_on_run impl_1
 puts "Implementation done!"
 
 # Export hardware description file and bitstream files to export/ dir
